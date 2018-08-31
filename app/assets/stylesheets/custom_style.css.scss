@@ -1,13 +1,21 @@
 .backgroundanimation {
   width: 100vw;
   height: 100vh;
-  background: #3E1E68;
+  /*background: #3E1E68;*/
+  background-color: #3B2F63;
+  background-image: -webkit-radial-gradient(50% top, circle, rgba(84,90,182,0.6) 0%, rgba(84,90,182,0) 75%),-webkit-radial-gradient(right top, circle, #794aa2 0%, rgba(121,74,162,0) 57%);
+  /*background-image: radial-gradient(50% top, circle, rgba(84,90,182,0.6) 0%, rgba(84,90,182,0) 75%),radial-gradient(right top, circle, #794aa2 0%, rgba(121,74,162,0) 57%);*/
+  background-repeat: no-repeat;
+  background-size: 100% 1000px;
+  color: #c7b8d8;
+  margin: 0;
+  position: relative;
 }
 
 $particleSize: 20vmin;
 $animationDuration: 6s;
 $amount: 20;
-.backgroundanimation span {
+.backgroundanimation .span-animation {
   width: $particleSize;
   height: $particleSize;
   border-radius: $particleSize;
@@ -19,20 +27,20 @@ $amount: 20;
   animation-iteration-count: infinite;
   $colors: (
     #583C87,
-    #E45A84,
+    #e454a8,
     #FFACAC
   );
   @for $i from 1 through $amount {
     &:nth-child(#{$i}) {
       color: nth($colors, random(length($colors)));
-      top: random(100) * 1%;
-      left: random(100) * 1%;
+      top: random(50) * 1%;
+      left: random(50) * 1%;
       animation-duration: (random($animationDuration * 10) / 10) * 1s + 10s;
       animation-delay: random(($animationDuration + 10s) * 10) / 10 * -1s;
       transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
-      $blurRadius: (random() + 0.5) * $particleSize * 0.5;
+      $blurRadius: (random() + 0.5) * $particleSize * 0.6;    //Radus style for cicle
       $x: if(random() > 0.5, -1, 1);
-      box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor;
+      box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor; //Velocity
     }
   }
 }
@@ -44,5 +52,5 @@ $amount: 20;
 }
 
 .facebook-icon {
-    bg-indigo border-indigo text-indigo
+
 }

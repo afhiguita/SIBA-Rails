@@ -1,41 +1,83 @@
-<% content_for :title do 'Edit' end%>
+<% content_for :title do 'SIBA - Register process' end%>
 <% content_for :subtitle do resource_name.to_s.humanize end%>
-<div class="card">
-  <div class="card-body">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
 
-      <div class="form-group row">
-        <%= f.label :firstname, class: "col-lg-3 col-form-label" %>
-        <%= f.text_field :firstname, class: 'form-control col-lg-9', autofocus: true, placeholder: :firstname %>
-      </div>
-      <div class="form-group row">
-        <%= f.label :lastname, class: "col-lg-3 col-form-label" %>
-        <%= f.text_field :lastname, class: 'form-control col-lg-9', placeholder: :lastname %>
-      </div>
-      <div class="form-group row">
-        <%= f.label :email, class: "col-lg-3 col-form-label" %>
-        <%= f.email_field :email, class: 'form-control col-lg-9', autofocus: true, autocomplete: "email" %>
-      </div>
-      <div class="form-group row">
-        <%= f.label :password, class: "col-lg-3 col-form-label" %>
-        <div class="col-lg-9">
-          <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
+<div class="card mb-0">
+  <ul class="nav nav-tabs nav-justified alpha-grey mb-0">
+    <li class="nav-item"><%= link_to new_user_session_path, class: 'nav-link border-y-0 border-left-0'  do %><h6 class="my-1">Sign in</h6><% end %></li>
+    <li class="nav-item"><a href="#login-tab2" class="nav-link border-y-0 border-right-0 active" data-toggle="tab"><h6 class="my-1">Register</h6></a></li>
+  </ul>
+
+  <div class="tab-content card-body">
+
+    <div class="tab-pane fade show active" id="login-tab2">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="text-center mb-3">
+          <i class="icon-plus3 icon-2x text-success border-success border-3 rounded-round p-3 mb-3 mt-1"></i>
+          <h5 class="mb-0">Create account</h5>
+          <span class="d-block text-muted">All fields are required</span>
+        </div>
+
+        <div class="form-group form-group-feedback form-group-feedback-left">
+          <%= f.text_field :username, class: 'form-control', autofocus: true, autocomplete: "new-password", placeholder: "Your username" %>
+          <div class="form-control-feedback">
+            <i class="icon-user-check text-muted"></i>
+          </div>
+        </div>
+
+        <div class="form-group form-group-feedback form-group-feedback-left">
+          <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email", placeholder: "Your Email" %>
+          <div class="form-control-feedback">
+            <i class="icon-mention text-muted"></i>
+          </div>
+        </div>
+
+        <div class="form-group form-group-feedback form-group-feedback-left">
+          <%= f.password_field :password, class: 'form-control', autocomplete: "new-password", placeholder: :password %>
+          <div class="form-control-feedback">
+            <i class="icon-user-lock text-muted"></i>
+          </div>
           <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
         </div>
-      </div>
-      <div class="form-group row">
-        <%= f.label :password_confirmation, class: "col-lg-3 col-form-label" %>
-        <%= f.password_field :password_confirmation, class: 'form-control col-lg-9', autocomplete: "new-password" %>
-      </div>
 
-      <div class="actions text-right">
-        <%= f.submit class: 'btn btn-primary' %>
-      </div>
-    <% end %>
+        <div class="form-group form-group-feedback form-group-feedback-left">
+          <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password", placeholder: :password_confirmation %>
+          <div class="form-control-feedback">
+            <i class="icon-user-lock text-muted"></i>
+          </div>
+          <em>(Reply the same password entried)</em>
+        </div>
 
-    <%= render "users/shared/links" %>
+        <div class="form-group text-center text-muted content-divider">
+          <span class="px-2">Additions</span>
+        </div>
+
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
+              Send me <a href="#">test account settings</a>
+            </label>
+          </div>
+
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
+              Subscribe to monthly newsletter
+            </label>
+          </div>
+
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" name="remember" class="form-input-styled" data-fouc>
+              Accept <a href="#">terms of service</a>
+            </label>
+          </div>
+        </div>
+        <%= f.submit "Register", class: 'btn bg-dark btn-block' %>
+      <% end %>
+    </div>
   </div>
 </div>

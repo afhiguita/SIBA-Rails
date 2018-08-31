@@ -4,13 +4,8 @@
   </div>
 
   <div class="form-group text-center">
-    <%= link_to(user_facebook_omniauth_authorize_path, class: "btn btn-outline bg-indigo border-indigo text-indigo btn-icon rounded-round border-2") do %>
-      <i class="icon-facebook"></i>
-    <% end %>
-    <button type="button" class="btn btn-outline bg-pink-300 border-pink-300 text-pink-300 btn-icon rounded-round border-2 ml-2"><i class="icon-facebook"></i></button>
-    <button type="button" class="btn btn-outline bg-info border-info text-info btn-icon rounded-round border-2 ml-2"><i class="icon-facebook"></i></button>
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to(omniauth_authorize_path(resource_name, provider), class: 'btn btn-outline  btn-icon rounded-round border-2') do %>
+      <%= link_to(omniauth_authorize_path(resource_name, provider), class: 'btn btn-outline bg-indigo border-indigo text-indigo btn-icon rounded-round border-2') do %>
          <% @str = "<i class=\"icon-#{OmniAuth::Utils.camelize(provider).downcase}\"></i>".html_safe %>
          <%= @str %>
       <% end %>
