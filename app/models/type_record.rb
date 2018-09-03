@@ -1,0 +1,2 @@
+class TypeRecord < ApplicationRecord
+end
