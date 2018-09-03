@@ -11,7 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    @user = User.new(params[:user])
+    if @user.save
+      flash[:success] = "Welcome #{ @user[:full_name] }"
+      redirect_to user_session_edit_path
+    else
+      render 'new'
+    end
   end
 
   # GET /resource/edit
@@ -47,7 +53,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :avatar, :avatar_cache, :remove_avatar])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :full_name, :username, :avatar, :avatar_cache, :remove_avatar])
   end
 
   # The path used after sign up.
