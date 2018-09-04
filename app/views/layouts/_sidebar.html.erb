@@ -19,7 +19,6 @@
   <div class="sidebar-content">
 
     <!-- User menu -->
-    <!-- User menu -->
     <div class="sidebar-user">
       <div class="card-body media">
         <div class="mr-3">
@@ -54,7 +53,7 @@
 
         <!-- Main -->
         <li class="nav-item-header">
-          <div class="text-uppercase font-size-xs line-height-xs">Configuration</div>
+          <div class="text-uppercase font-size-xs line-height-xs">Application</div>
           <i class="icon-menu" title="Main"></i>
         </li>
         <li class="nav-item">
@@ -67,27 +66,23 @@
           </a>
         </li>
         <li class="nav-item nav-item-submenu">
-          <a href="#" class="nav-link"><i class="icon-copy"></i> <span>User & Security</span></a>
-
-          <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-            <li class="nav-item"><a href="#" class="nav-link">User List</a></li>
-            <li class="nav-item"><a href="#" class="nav-link active">Role</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
-          </ul>
+          <%= link_to account_index_path, class: 'nav-link' do %>
+            <i class="icon-book"></i> Accounts<span></span>
+          <% end %>
         </li>
         <!-- /main -->
 
         <!-- Layout -->
         <li class="nav-item-header">
-          <div class="text-uppercase font-size-xs line-height-xs">Objects</div>
+          <div class="text-uppercase font-size-xs line-height-xs">Configuration</div>
           <i class="icon-menu" title="Layout options"></i>
         </li>
         <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-          <a href="#" class="nav-link"><i class="icon-stack2"></i> <span>Objects List</span></a>
+          <a href="#" class="nav-link"><i class="icon-stack2"></i> <span>Custom</span></a>
 
           <ul class="nav nav-group-sub" data-submenu-title="Page layouts">
-            <li class="nav-item"><a href="#" class="nav-link">Fields</a></li>
-            <li class="nav-item"><a href="#" class="nav-link active">Page layout</a></li>
+            <li class="nav-item "><%= link_to 'Models', object_path, class:'nav-link' %></li>
+            <li class="nav-item "><a href="#" class="nav-link">Custom labels</a> </li>
           </ul>
         </li>
         <!-- /layout -->

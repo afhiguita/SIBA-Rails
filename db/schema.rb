@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_29_033023) do
+ActiveRecord::Schema.define(version: 2018_09_04_130135) do
+
+  create_table "account_types", force: :cascade do |t|
+    t.string "name"
+    t.boolean "isActive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.string "number"
+    t.string "account_type_id"
+    t.string "type_record_id"
+    t.string "parent_id"
+    t.boolean "isActive"
+    t.string "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "FirstName"
+    t.string "LastName"
+    t.boolean "isActive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "record_types", force: :cascade do |t|
+    t.string "name"
+    t.boolean "isActive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"

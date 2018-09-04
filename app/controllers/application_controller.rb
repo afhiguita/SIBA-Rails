@@ -17,7 +17,9 @@ class ApplicationController < ActionController::Base
       ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end
   end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :full_name, :avatar])
   end
-end
+
+ end

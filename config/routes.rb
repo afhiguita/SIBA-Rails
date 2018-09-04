@@ -11,4 +11,10 @@ Rails.application.routes.draw do
        sign_out_via: [:post, :delete]
       
   root to: 'home#index'
+
+  get 'objects',  to: 'object#index' , as: 'object'
+  get 'objects/show',  to: 'object#show' , as: 'object_show'
+
+  resources :account
+
 end

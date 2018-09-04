@@ -1,0 +1,48 @@
+<% content_for :title do @Accounts.table_name end%>
+<% content_for :subtitle do 'Record list' end%>
+
+<div class="card">
+  <div class="card-header header-elements-inline">
+    <h5 class="card-title">Default style</h5>
+    <div class="header-elements">
+      <div class="list-icons">
+        <a class="list-icons-item" data-action="collapse"></a>
+        <a class="list-icons-item" data-action="reload"></a>
+        <a class="list-icons-item" data-action="remove"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+
+    <table class="table datatable-basic">
+      <thead>
+      <tr>
+        <% @Accounts.attribute_names.each {|col| %>
+          <% if (col != 'id') %>
+          <th><%= col.humanize %></th>
+        <% end
+           } %>
+      </tr>
+      </thead>
+      <tbody>
+      <% @Accounts.each do |acc|  %>
+        <tr>
+          <% @Accounts.attribute_names.each { |col| %>
+            <% if (col != 'name' && col != 'id') %>
+              <td><%= acc[col] %></td>
+            <% elsif col == 'name' %>
+              <td><%= link_to account_path(acc.id) do %><%= acc['name'] %><% end %></td>
+            <% end %>
+          <% } %>
+        </tr>
+      <% end %>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td></td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

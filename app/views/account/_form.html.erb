@@ -1,0 +1,41 @@
+<%= form_for object_cust do |form| %>
+  <div class="card-footer row bg-white">
+    <div class="col-lg-12 justify-content-between align-items-center" style="text-align: -webkit-center; text-align: center">
+      <% if @isEdit %>
+        <%= form.submit class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', account_path, class: 'btn btn-primary' %>
+      <% else %>
+        <%= link_to 'New', new_account_path, class: 'btn btn-primary' %>
+        <%= link_to 'Edit', edit_account_path, class: 'btn btn-primary' %>
+        <%= link_to 'Close', account_index_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body row">
+  <% object_cust.attribute_names.each do |obj| %>
+    <% if (obj != 'id') %>
+      <div class="col-md-6">
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label font-weight-bold "><%= obj.humanize %> (<%= object_cust.column_for_attribute(obj).type %>)</label>
+          <div class="col-lg-9">
+            <div class="form-control-plaintext">
+              <%
+                fieldType = object_cust.column_for_attribute(obj).type
+                case fieldType.to_s
+                when "boolean"
+              %>
+                <%= form.check_box obj, class: 'form-control', disabled: !isEdit %>
+              <% when "string" %>
+                <%= form.text_field obj, class: 'form-control', disabled: !isEdit %>
+              <% when "datetime" %>
+                <%= form.datetime_select obj, class: 'form-control', disabled: !isEdit %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+
+<% end %>

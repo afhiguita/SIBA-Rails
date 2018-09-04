@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Object name</th>
+      <th>Type</th>
+      <th>Default value</th>
+      <th>SQL type</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%  i=0
+      @models.each do |obj|
+  %>
+    <tr>
+      <td><%= link_to object_show_path(obj:i) do %><%= obj %> <% end %></td>
+      <td></td>
+    </tr>
+  <%
+    i = i + 1
+    end
+  %>
+  </tbody>
+</table>

@@ -6,7 +6,7 @@ gem 'rails', '~> 5.2.1'     # Bundle edge Rails instead: gem 'rails', github: 'r
 gem 'puma', '~> 3.11'       # Use Puma as the app server
 
 gem 'sqlite3'               # Use sqlite3 as the database for Active Record
-gem 'mongoid', '~> 6.0'
+# gem 'mongoid', '~> 6.0'
 gem 'bson_ext'
 gem 'rspec'
 
